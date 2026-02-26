@@ -1,0 +1,15 @@
+{
+  "embedding_model_name": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "labels": [
+    "Critical Error",
+    "Deprecation Warning",
+    "Error",
+    "HTTP Status",
+    "Resource Usage",
+    "Security Alert",
+    "Workflow Error"
+  ],
+  "num_labels": 7,
+  "training_samples": 1910
+}

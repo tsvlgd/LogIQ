@@ -1,17 +1,22 @@
-"""Regex-based log classification service."""
-
+import re
 from typing import Optional
 
 
-def classify_by_regex(text: str) -> Optional[tuple[str, float]]:
-    """
-    Classify a log message using regex patterns.
+class RegexService:
+    def __init__(self):
+        self.patterns = {
+            r"User User\d+ logged (in|out).": "User Action",
+            r"Backup (started|ended) at .*": "System Notification",
+            r"Backup completed successfully.": "System Notification",
+            r"System updated to version .*": "System Notification",
+            r"File .* uploaded successfully by user .*": "System Notification",
+            r"Disk cleanup completed successfully.": "System Notification",
+            r"System reboot initiated by user .*": "System Notification",
+            r"Account with ID .* created by .*": "User Action"
+        }
 
-    Args:
-        text: Log text to classify.
-
-    Returns:
-        Tuple of (category, confidence) or None if no match.
-    """
-    # TODO: Implement regex-based classification
-    pass
+    def classify(self, text: str) -> Optional[str]:
+        for pattern, label in self.patterns.items():
+            if re.search(pattern, text):
+                return label
+        return None

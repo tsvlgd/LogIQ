@@ -1,22 +1,12 @@
-"""Main classifier orchestration service."""
+import joblib
 
-from typing import Optional
+class ClassifierService:
+    def __init__(self, model_path: str):
+        self.model = joblib.load(model_path)
 
-
-def classify(text: str) -> Optional[tuple[str, float]]:
-    """
-    Classify a log message using the hybrid approach.
-
-    Uses fallback strategy:
-    1. Try regex classification
-    2. Try embedding + logistic regression
-    3. Fall back to LLM if confidence is low
-
-    Args:
-        text: Log text to classify.
-
-    Returns:
-        Tuple of (category, confidence) or None if all methods fail.
-    """
-    # TODO: Implement hybrid classification strategy
-    pass
+    def predict(self, embeddings):
+        probs = self.model.predict_proba(embeddings)
+        idx = probs.argmax(axis=1)[0]
+        label = self.model.classes_[idx]
+        confidence = probs[0][idx]
+        return label, float(confidence)
