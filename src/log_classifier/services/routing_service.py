@@ -1,22 +1,28 @@
-"""Routing service for directing classification requests through the pipeline."""
+class RoutingService:
+    def __init__(
+            self,
+            regex_service,
+            embedding_service,
+            classifier_service,
+            llm_service,
+            confidence_threshold
+    ):
+        self.regex_service = regex_service
+        self.embedding_service = embedding_service
+        self.classifier_service = classifier_service
+        self.llm_service = llm_service
+        self.confidence_threshold = confidence_threshold
 
-from typing import Optional
 
-from log_classifier.domain.schemas import LogResponse
+    def route(self, log_message: str) -> str:
+        
+        label = self.regex_service.classify(log_message)
+        if label:
+            return label
+        
+        embeddings = self.embedding_service.embed([log_message])
+        label, confidence = self.classifier_service.predict(embeddings)
 
-
-def route_classification_request(
-    text: str, metadata: Optional[dict] = None
-) -> Optional[LogResponse]:
-    """
-    Route a log classification request through the pipeline.
-
-    Args:
-        text: Log text to classify.
-        metadata: Additional metadata for routing decisions.
-
-    Returns:
-        Classification result or None if routing fails.
-    """
-    # TODO: Implement request routing through classification pipeline
-    pass
+        if confidence >= self.confidence_threshold: 
+            return label
+        return self.llm_service.classify(log_message)

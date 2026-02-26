@@ -15,6 +15,7 @@ dependencies = [
     "python-dotenv>=1.2.1",
     "scikit-learn>=1.7.2",
     "sentence-transformers>=5.2.3",
+    "torch==2.2.2",
     "uvicorn>=0.41.0",
 ]
 

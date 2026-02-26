@@ -1,35 +1,42 @@
-"""Configuration management for log-classifier."""
-
-from typing import Optional
-
-from pydantic_settings import BaseSettings
+from pydantic import BaseSettings, Field
 
 
 class Settings(BaseSettings):
-    """Application settings loaded from environment variables."""
+    # Model configuration
+    embedding_model_name: str = Field(
+        default="all-MiniLM-L6-v2",
+        description="SentenceTransformer model name"
+    )
 
-    # Embedding Configuration
-    embedding_model_name: str = "all-MiniLM-L6-v2"
+    classifier_path: str = Field(
+        default="models/log_classifier.joblib",
+        description="Path to trained sklearn classifier"
+    )
 
-    # Model Configuration
-    classifier_path: str = "models/classifier.pkl"
-    confidence_threshold: float = 0.5
+    metadata_path: str = Field(
+        default="models/metadata.json",
+        description="Path to model metadata file"
+    )
 
-    # LLM Configuration
-    llm_model_name: str = "gpt-3.5-turbo"
+    confidence_threshold: float = Field(
+        default=0.6,
+        description="Minimum probability required before LLM fallback"
+    )
 
-    # Server Configuration
-    server_host: str = "0.0.0.0"
-    server_port: int = 8000
-    debug: bool = False
+    # LLM configuration
+    llm_model_name: str = Field(
+        default="deepseek-r1-distill-llama-70b",
+        description="LLM model identifier"
+    )
+
+    llm_timeout_seconds: int = Field(
+        default=10,
+        description="Timeout for LLM calls"
+    )
 
     class Config:
-        """Pydantic config."""
-
         env_file = ".env"
-        case_sensitive = False
+        env_file_encoding = "utf-8"
 
 
-def get_settings() -> Settings:
-    """Get application settings."""
-    return Settings()
+settings = Settings()
