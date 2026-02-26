@@ -5,6 +5,8 @@ from log_classifier.services.classifier_service import ClassifierService
 from log_classifier.services.llm_service import LLMService
 from log_classifier.services.routing_service import RoutingService
 
+import warnings
+warnings.simplefilter("ignore", FutureWarning)
 
 def test_routing():
     # Instantiate real services
