@@ -8,16 +8,17 @@ authors = [{name = "Your Name", email = "your.email@example.com"}]
 license = {text = "MIT"}
 dependencies = [
     "fastapi>=0.133.1",
+    "groq>=1.0.0",
     "joblib>=1.5.3",
-    "numpy>=2.2.6",
     "pydantic>=2.12.5",
     "pydantic-settings>=2.13.1",
     "python-dotenv>=1.2.1",
-    "scikit-learn>=1.7.2",
-    "sentence-transformers>=5.2.3",
+    "numpy<2",
+    "scikit-learn==1.6.1",
+    "sentence-transformers==2.6.1",
+    "transformers==4.38.2",
     "torch==2.2.2",
-    "uvicorn>=0.41.0",
-]
+  ]
 
 [build-system]
 requires = ["hatchling"]
