@@ -1,4 +1,4 @@
-from llm_service import LLMService
+from log_classifier.services.llm_service import LLMService
 
 def test_llm():
     llm = LLMService()

@@ -1,8 +1,11 @@
 import joblib
+import json
 
 class ClassifierService:
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str, metadata_path: str):
         self.model = joblib.load(model_path)
+        with open(metadata_path, "r") as f:
+            self.metadata = json.load(f)
 
     def predict(self, embeddings):
         probs = self.model.predict_proba(embeddings)
