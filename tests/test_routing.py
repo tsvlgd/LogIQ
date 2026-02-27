@@ -45,9 +45,7 @@ def test_routing():
     "System instability observed after configuration update; dependent services intermittently failing.",
 
     "Post-deployment anomaly detected affecting user-facing latency but without observable resource saturation."
-]
-    
-
+]  
     for log in test_logs:
         label = routing_service.route(log)
         print("Log:", log)

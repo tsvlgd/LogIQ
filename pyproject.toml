@@ -18,7 +18,8 @@ dependencies = [
     "sentence-transformers==2.6.1",
     "transformers==4.38.2",
     "torch==2.2.2",
-  ]
+    "uvicorn>=0.41.0",
+]
 
 [build-system]
 requires = ["hatchling"]
