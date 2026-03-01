@@ -17,30 +17,36 @@
 
     <!-- Navigation -->
     <header class="navbar">
-        <div class="nav-left">
-            <div class="logo">Log<span class="logo-highlight">IQ</span></div>
-        </div>
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">Log<span class="logo-accent">IQ</span></div>
+            </div>
 
-        <div class="nav-right">
-            <a href="https://github.com/tsvlgd/LogIq" target="_blank" class="github-link">
-                GitHub
-            </a>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+                <a href="https://github.com/tsvlgd/LogIq" target="_blank" class="github-link">
+                    GitHub
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main>
+    <main class="main-container">
         <section class="hero">
-            <h1>Turn Raw Logs into <span class="highlight-text">Insight</span></h1>
-            <p>
-                Paste raw logs and instantly classify them using
-                intelligent routing and LLM fallback.
-            </p>
+            <div class="hero-content">
+                <h1>Turn Raw Logs into <span class="highlight-accent">Insight</span></h1>
+                <p>
+                    Paste raw logs and instantly classify them using
+                    intelligent routing and LLM fallback.
+                </p>
+            </div>
         </section>
 
         <!-- Main Card -->
         <section class="app-card">
-
             <div class="input-section">
                 <textarea
                     id="logs"
@@ -74,13 +80,15 @@
 
             <!-- Error Message -->
             <div id="error-message" class="error-message"></div>
-
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Built with FastAPI · Regex Routing · LLM fallback</p>
+        <div class="footer-container">
+            <p>LogIQ • Intelligent Log Classification</p>
+            <p class="footer-credits">FastAPI · LLM Routing · Open Source</p>
+        </div>
     </footer>
 
     <!-- Main JS -->
