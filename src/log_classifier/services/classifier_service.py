@@ -11,5 +11,5 @@ class ClassifierService:
         probs = self.model.predict_proba(embeddings)
         idx = probs.argmax(axis=1)[0]
         label = self.model.classes_[idx]
-        confidence = probs[0][idx]
+        confidence = round(probs[0][idx], 2)
         return label, float(confidence)

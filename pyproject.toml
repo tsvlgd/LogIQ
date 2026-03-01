@@ -32,4 +32,6 @@ packages = ["src/log_classifier"]
 dev = [
     "httpx>=0.28.1",
     "pytest>=9.0.2",
+    "requests>=2.32.5",
+    "streamlit>=1.54.0",
 ]
