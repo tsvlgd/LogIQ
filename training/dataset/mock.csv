@@ -1,0 +1,51 @@
+log,target_expected
+2024-06-01 10:00:01 - User john logged in successfully,User Action
+2024-06-01 10:05:12 - User mary logged out,User Action
+2024-06-01 10:07:45 - Failed login attempt for user admin,Security
+2024-06-01 10:10:32 - CPU usage reached 92%,Resource Usage
+2024-06-01 10:11:01 - Memory usage exceeded threshold 85%,Resource Usage
+2024-06-01 10:15:44 - Disk space remaining 5%,Resource Usage
+2024-06-01 10:18:09 - Connection timeout to database,Network
+2024-06-01 10:20:10 - Database connection established,System Event
+2024-06-01 10:22:33 - Service nginx restarted,System Event
+2024-06-01 10:25:55 - Unauthorized access attempt detected,Security
+2024-06-01 10:27:12 - User alice updated profile settings,User Action
+2024-06-01 10:29:17 - Packet loss detected on interface eth0,Network
+2024-06-01 10:30:45 - API request failed with 500 error,Error
+2024-06-01 10:33:11 - Configuration file updated,System Event
+2024-06-01 10:35:20 - Password reset requested for user mike,User Action
+2024-06-01 10:36:55 - SSL certificate expired,Security
+2024-06-01 10:38:44 - Redis cache miss occurred,System Event
+2024-06-01 10:40:12 - High latency detected in microservice,Network
+2024-06-01 10:42:50 - User role changed to admin,Security
+2024-06-01 10:45:01 - Application deployed successfully,System Event
+2024-06-01 10:46:23 - Server reboot initiated,System Event
+2024-06-01 10:48:09 - CPU spike detected during batch processing,Resource Usage
+2024-06-01 10:50:31 - User downloaded export report,User Action
+2024-06-01 10:52:17 - Failed to parse configuration file,Error
+2024-06-01 10:54:00 - Network interface eth1 down,Network
+2024-06-01 10:55:45 - User created new project workspace,User Action
+2024-06-01 10:57:19 - Memory leak suspected in process 2143,Resource Usage
+2024-06-01 10:59:22 - Firewall rule updated,Security
+2024-06-01 11:01:10 - Backup completed successfully,System Event
+2024-06-01 11:02:33 - Disk write error on device sda1,Error
+2024-06-01 11:04:48 - Suspicious login from unknown IP,Security
+2024-06-01 11:06:00 - CPU load normalized,System Event
+2024-06-01 11:07:19 - User deleted file report.csv,User Action
+2024-06-01 11:09:11 - DNS resolution failed,Network
+2024-06-01 11:10:55 - Kubernetes pod crashed unexpectedly,Error
+2024-06-01 11:12:33 - Service health check passed,System Event
+2024-06-01 11:14:47 - Elevated privileges granted to user root,Security
+2024-06-01 11:16:21 - Network congestion detected,Network
+2024-06-01 11:18:09 - CPU throttling activated,Resource Usage
+2024-06-01 11:20:44 - User updated billing information,User Action
+2024-06-01 11:22:55 - Unauthorized API access blocked,Security
+2024-06-01 11:25:03 - Container memory limit exceeded,Resource Usage
+2024-06-01 11:27:19 - File upload failed due to timeout,Error
+2024-06-01 11:29:42 - VPN connection established,System Event
+2024-06-01 11:31:58 - Repeated failed SSH login attempts,Security
+2024-06-01 11:33:17 - Disk cleanup job executed,System Event
+2024-06-01 11:35:28 - User session expired,User Action
+2024-06-01 11:37:49 - Unexpected null pointer exception,Error
+2024-06-01 11:40:02 - Network packet retransmission detected,Network
+2024-06-01 11:42:15 - Resource quota exceeded for namespace,Resource Usage

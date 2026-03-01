@@ -47,6 +47,8 @@ if __name__ == "__main__":
     # Example usage
     raw_log = """
     2024-06-01 12:00:00,123 - User User123 logged in.
+    2024-06-01 12:05:00,456 - User User123 performed action A.
+    2024-06-01 12:10:00,789 - User User
     """
     result = norm(raw_log)
-    print(type(result))
+    print(result)

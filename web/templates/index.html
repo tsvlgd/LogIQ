@@ -35,7 +35,7 @@
 
     <!-- Hero Section -->
     <main class="main-container">
-        <section class="hero">
+        <section class="hero" id="heroSection">
             <div class="hero-content">
                 <h1>Turn Raw Logs into <span class="highlight-accent">Insight</span></h1>
                 <p>
@@ -45,38 +45,103 @@
             </div>
         </section>
 
+        <!-- Mode Switcher -->
+        <div class="mode-switcher">
+            <button class="mode-btn mode-btn-active" data-mode="paste" onclick="switchMode('paste')">
+                <span class="mode-icon">✏️</span> Paste Logs
+            </button>
+            <button class="mode-btn" data-mode="file" onclick="switchMode('file')">
+                <span class="mode-icon">📁</span> Upload File
+            </button>
+        </div>
+
         <!-- Main Card -->
         <section class="app-card">
-            <div class="input-section">
-                <textarea
-                    id="logs"
-                    placeholder="Paste your logs here...
+            <!-- Paste Mode -->
+            <div id="pasteMode" class="mode-content mode-content-active">
+                <div class="input-section">
+                    <textarea
+                        id="logs"
+                        placeholder="Paste your logs here...
 
 2024-06-01 12:00:00 - User logged in
 2024-06-01 12:05:00 - Disk full"
-                ></textarea>
+                    ></textarea>
+                </div>
+
+                <div class="action-row">
+                    <button
+                        id="classifyBtn"
+                        class="btn btn-primary"
+                        onclick="classifyLogs()"
+                    >
+                        Classify Logs
+                    </button>
+
+                    <button
+                        id="clearBtn"
+                        class="btn btn-secondary"
+                        onclick="clearAll()"
+                    >
+                        Clear
+                    </button>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="results-container"></div>
             </div>
 
-            <div class="action-row">
-                <button
-                    id="classifyBtn"
-                    class="btn btn-primary"
-                    onclick="classifyLogs()"
-                >
-                    Classify Logs
-                </button>
+            <!-- File Mode -->
+            <div id="fileMode" class="mode-content">
+                <div class="file-input-section">
+                    <div class="drag-drop-area" id="dragDropArea">
+                        <div class="drag-drop-content">
+                            <div class="drag-drop-icon">📤</div>
+                            <p class="drag-drop-label">Drag and drop CSV or Excel file</p>
+                            <p class="drag-drop-hint">or click to browse</p>
+                        </div>
+                        <input
+                            type="file"
+                            id="fileInput"
+                            accept=".csv,.xlsx"
+                            style="display: none;"
+                        />
+                    </div>
 
-                <button
-                    id="clearBtn"
-                    class="btn btn-secondary"
-                    onclick="clearAll()"
-                >
-                    Clear
-                </button>
+                    <div id="filePreview" class="file-preview" style="display: none;">
+                        <div class="file-preview-content">
+                            <div class="file-icon">📄</div>
+                            <div class="file-info">
+                                <p class="file-name" id="fileName"></p>
+                                <p class="file-size" id="fileSize"></p>
+                            </div>
+                            <button class="file-remove-btn" onclick="removeFile()" title="Remove file">✕</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button
+                        id="scanFileBtn"
+                        class="btn btn-primary"
+                        onclick="classifyFile()"
+                        disabled
+                    >
+                        Scan File
+                    </button>
+
+                    <button
+                        id="clearFileBtn"
+                        class="btn btn-secondary"
+                        onclick="clearFileMode()"
+                    >
+                        Clear
+                    </button>
+                </div>
+
+                <!-- File Results -->
+                <div id="fileResults" class="results-container"></div>
             </div>
-
-            <!-- Results -->
-            <div id="results" class="results-container"></div>
 
             <!-- Error Message -->
             <div id="error-message" class="error-message"></div>

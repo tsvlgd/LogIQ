@@ -19,6 +19,7 @@ dependencies = [
     "transformers==4.38.2",
     "torch==2.2.2",
     "uvicorn>=0.41.0",
+    "python-multipart>=0.0.22",
 ]
 
 [build-system]
