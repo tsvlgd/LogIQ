@@ -40,8 +40,6 @@ def norm(raw_input: str) -> List[LogRequest]:
             if message:
                 logs.append(LogRequest(message=message))
 
-        if len(logs) == 1:
-            return logs[0]
         return logs
     
 

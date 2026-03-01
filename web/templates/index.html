@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogIq • Log Classification</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">Log<span>Iq</span></div>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://github.com/tsvlgd/LogIq" target="_blank" class="github-link">
+                GitHub
+            </a>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <h1>Prompt-friendly Log Classification</h1>
+            <p>
+                Paste raw logs and instantly classify them using
+                intelligent routing and LLM fallback.
+            </p>
+        </section>
+
+
+        <!-- Main Card -->
+        <section class="app-card">
+
+            <div class="input-section">
+                <textarea
+                    id="logs"
+                    placeholder="Paste your logs here...
+
+2024-06-01 12:00:00 - User logged in
+2024-06-01 12:05:00 - Disk full"
+                ></textarea>
+            </div>
+
+            <div class="action-row">
+                <button
+                    id="classifyBtn"
+                    class="primary-btn"
+                    onclick="classifyLogs()"
+                >
+                    Classify Logs
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="clearAll()"
+                >
+                    Clear
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="results-container"></div>
+
+        </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            Built with FastAPI · Regex Routing · LLM fallback
+        </p>
+    </footer>
+
+
+    <!-- Main JS -->
+    <script src="/static/index.js"></script>
+</body>
+</html>
