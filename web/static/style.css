@@ -1,220 +1,452 @@
-/* ===== Base ===== */
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #f4f2ff 0%, #f8f9fc 100%);
-    color: #1a1a1a;
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --accent: #6366f1;
+    --success: #22c55e;
+    --bg-light: #f8f7ff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --border-color: #1f2937;
+    --shadow-color: #000000;
+    --white: #ffffff;
 }
 
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f8f7ff 0%, #faf9ff 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-/* ===== Navbar ===== */
+/* ============================================
+   NAVBAR
+   ============================================ */
 
 .navbar {
+    background-color: var(--white);
+    border-bottom: 3px solid var(--border-color);
+    padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 40px;
-    background: white;
-    border-bottom: 1px solid #ececf2;
+    box-shadow: 0 4px 0 var(--shadow-color);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 20px;
+    font-size: 1.75rem;
+    font-weight: 800;
     letter-spacing: -0.5px;
-    color: #4f46e5;
+    color: var(--text-dark);
 }
 
-.logo span {
-    color: #9333ea;
+.logo-highlight {
+    color: var(--primary);
 }
 
-.navbar a {
+.github-link {
     text-decoration: none;
-    font-weight: 500;
-    color: #4f46e5;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--primary);
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+    border-radius: 4px;
 }
 
-.navbar a:hover {
-    opacity: 0.8;
+.github-link:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--shadow-color);
 }
 
+/* ============================================
+   MAIN LAYOUT
+   ============================================ */
 
-/* ===== Hero ===== */
+main {
+    flex: 1;
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
 
 .hero {
     text-align: center;
-    padding: 70px 20px 40px;
+    margin-bottom: 3rem;
 }
 
 .hero h1 {
-    font-size: 42px;
-    margin-bottom: 12px;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
 }
+
+.highlight-text {
+    color: var(--primary);
+}
+
+.logo-underline {
+    position: relative;
+    color: var(--text-dark);
+}
+
+/* .logo-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,8 Q12.5,2 25,8 T50,8 T75,8 T100,8' stroke='%238B1538' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+} */
 
 .hero p {
-    color: #5f6368;
-    font-size: 16px;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400;
 }
 
-
-/* ===== Main Card ===== */
+/* ============================================
+   APP CARD
+   ============================================ */
 
 .app-card {
-    max-width: 750px;
-    margin: 0 auto 80px;
-    background: white;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(79, 70, 229, 0.08);
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border: 3px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 8px 8px 0 var(--shadow-color);
     transition: all 0.2s ease;
 }
 
 .app-card:hover {
-    box-shadow: 0 25px 70px rgba(79, 70, 229, 0.12);
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--shadow-color);
 }
 
+/* ============================================
+   TEXTAREA
+   ============================================ */
 
-/* ===== Textarea ===== */
+.input-section {
+    margin-bottom: 1.5rem;
+}
 
-textarea {
+#logs {
     width: 100%;
-    height: 200px;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #e4e4ef;
-    resize: none;
-    font-size: 14px;
-    font-family: monospace;
+    min-height: 200px;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    resize: vertical;
     transition: all 0.2s ease;
-    background: #fafaff;
+    background-color: #fafafa;
+    color: var(--text-dark);
+    line-height: 1.5;
 }
 
-textarea:focus {
+#logs:focus {
     outline: none;
-    border-color: #4f46e5;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    border-color: var(--primary);
+    background-color: var(--white);
+    box-shadow: inset 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
+#logs::placeholder {
+    color: var(--text-light);
+    opacity: 0.6;
+}
 
-/* ===== Buttons ===== */
+/* ============================================
+   ACTION ROW
+   ============================================ */
 
 .action-row {
     display: flex;
-    gap: 12px;
-    margin-top: 18px;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
-.primary-btn {
-    background: #4f46e5;
-    color: white;
-    padding: 11px 22px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.primary-btn:hover {
-    background: #4338ca;
-}
-
-.secondary-btn {
-    background: #f2f3f7;
-    color: #333;
-    padding: 11px 22px;
-    border-radius: 10px;
-    border: none;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+    letter-spacing: 0.3px;
 }
 
-.secondary-btn:hover {
-    background: #e6e8f0;
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border-color: var(--border-color);
 }
 
-button:disabled {
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow-color);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+.btn-primary:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: var(--text-dark);
+    border-color: var(--border-color);
+}
 
-/* ===== Results ===== */
+.btn-secondary:hover:not(:disabled) {
+    background-color: #d1d5db;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow-color);
+}
+
+.btn-secondary:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+/* ============================================
+   RESULTS CONTAINER
+   ============================================ */
 
 .results-container {
-    margin-top: 28px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 1rem;
 }
 
 .result-card {
-    padding: 16px 18px;
-    border-radius: 12px;
-    background: #fafaff;
-    border: 1px solid #ececf5;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.15s ease;
+    padding: 1.25rem;
+    background-color: #f9fafb;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .result-card:hover {
-    transform: translateY(-2px);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow-color);
 }
 
 .result-label {
+    font-size: 1rem;
     font-weight: 600;
-    color: #1f1f1f;
+    color: var(--text-dark);
+    flex: 1;
 }
 
-.result-source {
-    font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+.result-badge {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 0 var(--shadow-color);
+    transition: all 0.2s ease;
 }
 
-
-/* Source Badge Colors */
-
-.result-source.regex {
-    background: #dcfce7;
-    color: #166534;
+.badge-regex {
+    background-color: var(--success);
+    color: var(--white);
 }
 
-.result-source.llm {
-    background: #e0e7ff;
-    color: #3730a3;
+.badge-llm {
+    background-color: var(--primary);
+    color: var(--white);
 }
 
+.result-badge:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--shadow-color);
+}
 
-/* ===== Error ===== */
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
 
-.error {
-    padding: 12px 14px;
-    background: #fee2e2;
+.error-message {
+    display: none;
+    padding: 1rem;
+    background-color: #fee2e2;
+    border: 2px solid #dc2626;
+    border-radius: 6px;
     color: #991b1b;
-    border-radius: 10px;
-    font-size: 14px;
+    font-weight: 500;
+    margin-top: 1rem;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+    animation: slideIn 0.3s ease-out;
 }
 
+.error-message.show {
+    display: block;
+}
 
-/* ===== Footer ===== */
+/* ============================================
+   FOOTER
+   ============================================ */
 
 .footer {
+    background-color: var(--white);
+    border-top: 3px solid var(--border-color);
+    padding: 2rem;
     text-align: center;
-    padding: 20px;
-    font-size: 13px;
-    color: #666;
+    box-shadow: 0 -4px 0 var(--shadow-color);
+    margin-top: auto;
+}
+
+.footer p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .nav-left,
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .app-card {
+        padding: 1.5rem;
+        border: 2px solid var(--border-color);
+        box-shadow: 4px 4px 0 var(--shadow-color);
+    }
+
+    .action-row {
+        gap: 0.75rem;
+    }
+
+    .btn {
+        flex: 1;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .result-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .result-badge {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .app-card {
+        padding: 1.25rem;
+    }
+
+    #logs {
+        min-height: 150px;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+    }
 }

@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     )
 
     confidence_threshold: float = Field(
-        default=0.7,
+        default=0.9,
         description="Minimum probability required before LLM fallback",
         ge=0.0,
         le=1.0,
