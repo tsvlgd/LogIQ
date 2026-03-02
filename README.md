@@ -1,7 +1,3 @@
-Here’s a **shorter, smarter, and more concise** version of your README while keeping all the essential tables, comparisons, and technical depth:
-
----
-
 # **LogIQ: Hybrid ML Log Classifier**
 
 A **high-performance, cost-optimized** log classification system combining **regex, sentence embeddings, ML, and LLM fallback (Groq/Llama)** for **sub-300ms latency** and **70-80% LLM cost reduction**.
