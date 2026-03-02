@@ -153,10 +153,10 @@ curl -X POST http://localhost:8000/classify \
 ## **Implementation Status**
 | **Priority** | **Task**                     |
 |--------------|-----------------------------|
-| ✅ Done       | Core classification pipeline |
-| ✅ Done       | Docker + FastAPI setup       |
-| 📋 High       | Health checks + rate limiting|
-| 📋 Medium     | Batch optimization           |
+| [X] Done       | Core classification pipeline |
+| [X] Done       | Docker + FastAPI setup       |
+| [] High       | Health checks + rate limiting|
+| [] Medium     | Batch optimization           |
 
 ---
 
