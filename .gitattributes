@@ -1,0 +1,6 @@
+# Ignore CSS files for language stats
+*.css linguist-vendored
+
+# Ignore vendor directories
+vendor/* linguist-vendored
+static/css/* linguist-vendored
