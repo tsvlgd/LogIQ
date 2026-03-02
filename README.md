@@ -1,4 +1,4 @@
-# **LogIQ: Hybrid ML Log Classifier**
+# **LogIQ: Hyrid ML Log Classifier**
 
 A **high-performance, cost-optimized** log classification system combining **regex, sentence embeddings, ML, and LLM fallback (Groq/Llama)** for **sub-300ms latency** and **70-80% LLM cost reduction**.
 
@@ -97,7 +97,7 @@ flowchart TD
     J --> L
     J --> M
 ```
----
+
 
 ## Backend & Infrastructure
 
