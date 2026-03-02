@@ -36,19 +36,7 @@ A **high-performance, cost-optimized** log classification system combining **reg
 | Classifier          | Scikit-learn LR             | Probabilistic log categorization     |
 | LLM Fallback        | Groq (`llama-3.1-8b`)       | Context-aware classification         |
 
-### **Performance Comparison**
-| **Metric**  | **Regex** | **ML**      | **LLM**     | **Hybrid**  |
-|-------------|----------|------------|------------|------------|
-| Latency     | <1ms     | ~150ms     | ~3s        | **~150ms** |
-| Accuracy    | 70%      | 85%        | 95%        | **92%**    |
-| Cost/1M logs| $0       | $0         | $50        | **$5-15**  |
 
-**Confidence Threshold:**
-- **Low (0.3)** → More LLM calls, higher accuracy
-- **Default (0.5)** → Balanced cost/accuracy
-- **High (0.8)** → Fewer LLM calls, lower cost
-
----
 
 ## **System Architecture**
 
