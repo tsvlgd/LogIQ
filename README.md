@@ -97,11 +97,64 @@ flowchart TD
     J --> L
     J --> M
 ```
+---
 
-**Backend Stack:**
-- **FastAPI** (async)
-- **Gunicorn + Uvicorn** (scalable)
-- **Dependency Injection** (modular services)
+## Backend & Infrastructure
+
+### **FastAPI (ASGI, Async)**
+
+* High-performance ASGI framework
+* Async support for LLM API calls and file uploads
+* Pydantic-based request validation
+* Server-Side Rendering (Jinja2) + REST API
+* Auto-generated OpenAPI docs (`/docs`)
+
+---
+
+### **Gunicorn + Uvicorn (Production Runtime)**
+
+* Gunicorn manages worker processes
+* Uvicorn runs the ASGI event loop
+* Graceful restarts and container-friendly signal handling
+
+**Scaling model:**
+
+* 1 worker per container (ML models are memory-heavy)
+* Scale horizontally via container replicas
+
+---
+
+### **Modular Service Architecture (Dependency Injection)**
+
+Clean separation of layers:
+
+* **API Router** → request validation & response formatting
+* **RoutingService** → pipeline orchestration
+* **Regex / ML / LLM Services** → independent classification strategies
+
+This enables:
+
+* Easy testing
+* Replaceable components
+* Clear separation of concerns
+
+---
+
+### **Containerization & Config**
+
+* Python 3.12-slim
+* `uv` + lockfile for deterministic installs
+* Non-root runtime user
+* Environment-driven configuration (`.env` / Docker `--env-file`)
+* No secrets baked into image
+
+---
+
+### **Scalability Strategy**
+
+* Stateless API design
+* Horizontal scaling via container replication
+* Confidence-based routing to reduce LLM cost
 
 ---
 
@@ -155,12 +208,3 @@ curl -X POST http://localhost:8000/classify \
 - [x] Docker + FastAPI setup
 - [ ] Health checks + rate limiting *(High)*
 - [ ] Batch optimization *(Medium)*
-
----
-
-**License:** MIT
-**Why This Works:**
-- **Regex** → Fast, cheap filtering
-- **ML** → Accurate for most cases
-- **LLM** → Only for edge cases
-- **Result:** **92% accuracy at 1/3 the LLM cost**
