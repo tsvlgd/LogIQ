@@ -1,0 +1,53 @@
+# ---------------------------
+# Python cache & bytecode
+# ---------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ---------------------------
+# Virtual environments
+# ---------------------------
+.venv/
+venv/
+env/
+
+# ---------------------------
+# Git & VCS
+# ---------------------------
+.git/
+.gitignore
+
+# ---------------------------
+# Environment files (secrets)
+# ---------------------------
+.env
+.env.*
+!.env.example
+
+# ---------------------------
+# Tests & training (not needed in production image)
+# ---------------------------
+tests/
+training/
+
+# ---------------------------
+# Editor / IDE configs
+# ---------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ---------------------------
+# Logs & local artifacts
+# ---------------------------
+*.log
+*.sqlite3
+
+# ---------------------------
+# Docker files themselves (optional)
+# ---------------------------
+docker-compose*
+compose*.yml
