@@ -36,9 +36,13 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+<<<<<<< HEAD
 COPY --from=builder /app /app
 
 RUN chown -R appuser:appuser /app
+=======
+COPY --from=builder --chown=appuser:appuser /app /app
+>>>>>>> 4e0b762 (build(docker): optimize image layers using COPY --chown to prevent size duplication)
 
 USER appuser
 
