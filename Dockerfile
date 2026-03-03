@@ -1,8 +1,7 @@
-# ---------- Stage 1: Builder ----------
 FROM python:3.12-slim AS builder
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
@@ -11,30 +10,25 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv
 RUN pip install --no-cache-dir uv
 
-# Copy dependency files first (for caching)
 COPY pyproject.toml uv.lock README.md ./
-
-# Create virtual environment inside project
 RUN uv sync --frozen
 
-# Copy application code
 COPY src/ src/
 COPY web/ web/
 COPY models-artifacts/ models-artifacts/
 
 
-# ---------- Stage 2: Runtime ----------
-FROM python:3.12-slim
+FROM python:3.12-slim AS runtime
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/app/.venv/bin:$PATH" \
+    PYTHONPATH="/app/src"
 
 WORKDIR /app
 
-# Create non-root user
 ARG UID=10001
 RUN adduser \
     --disabled-password \
@@ -42,14 +36,8 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
-# Copy entire app including .venv
 COPY --from=builder /app /app
 
-# Activate virtual environment
-ENV PATH="/app/.venv/bin:$PATH"
-ENV PYTHONPATH=/app/src
-
-# Set permissions
 RUN chown -R appuser:appuser /app
 
 USER appuser
