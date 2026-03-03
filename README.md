@@ -4,6 +4,9 @@ A **high-performance, cost-optimized** log classification system combining **reg
 
 ---
 
+![LogIQ Demo](web/demo.gif)
+---
+
 ## **Table of Contents**
 - [How It Works](#how-it-works)
 - [ML/NLP Architecture](#mlnlp-architecture)
@@ -177,7 +180,7 @@ curl -X POST http://localhost:8000/classify \
 ```
 **Response:**
 ```json
-{
+{****
   "label": "CONNECTIVITY_ERROR",
   "confidence": 0.85,
   "method": "embedding_classifier"
