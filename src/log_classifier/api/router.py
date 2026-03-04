@@ -1,4 +1,3 @@
-# log_classifier/api/router.py
 import io 
 import pandas as pd
 from typing import List, Union
