@@ -1,7 +1,7 @@
-import io 
+import io
 import pandas as pd
 from typing import List, Union
-from fastapi import UploadFile, File 
+from fastapi import UploadFile, File
 from log_classifier.api.utils import norm
 from fastapi.responses import StreamingResponse
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -17,8 +17,10 @@ from log_classifier.services.routing_service import RoutingService
 
 router = APIRouter()
 
+
 def get_router(request: Request) -> RoutingService:
     return request.app.state.router
+
 
 @router.post(
     "/classify",
@@ -56,7 +58,6 @@ def classify(
         )
 
     return responses[0] if len(responses) == 1 else responses
-    
 
 
 @router.post("/classify-file")
@@ -64,7 +65,7 @@ async def classify_file(
     file: UploadFile = File(...),
     routing_service: RoutingService = Depends(get_router),
 ):
-    
+
     contents = await file.read()
     try:
         if file.filename.endswith(".csv"):
@@ -87,7 +88,4 @@ async def classify_file(
     df.to_csv(output, index=False)
     output.seek(0)
 
-    return StreamingResponse(
-        iter([output.getvalue()]),
-        media_type="text/csv"
-    )
+    return StreamingResponse(iter([output.getvalue()]), media_type="text/csv")
