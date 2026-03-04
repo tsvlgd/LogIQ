@@ -28,7 +28,7 @@ def classify(
     request: LogInput,
     routing_service: RoutingService = Depends(get_router),
 ):
-    # Normalize to List[LogRequest]
+
     if isinstance(request, LogRequest):
         logs = [request]
 
@@ -64,10 +64,8 @@ async def classify_file(
     file: UploadFile = File(...),
     routing_service: RoutingService = Depends(get_router),
 ):
-    # 1. Read file contents
+    
     contents = await file.read()
-
-    # 2. Load into pandas
     try:
         if file.filename.endswith(".csv"):
             df = pd.read_csv(io.BytesIO(contents))
@@ -78,21 +76,17 @@ async def classify_file(
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid file format")
 
-    # 3. Validate required column
     if "log" not in df.columns:
         raise HTTPException(status_code=400, detail="File must contain 'log' column")
 
-    # 4. Apply existing routing logic
     df["predicted_label"] = df["log"].apply(
         lambda msg: routing_service.route(msg).label
     )
 
-    # 5. Convert back to CSV
     output = io.StringIO()
     df.to_csv(output, index=False)
     output.seek(0)
 
-    # 6. Return downloadable response
     return StreamingResponse(
         iter([output.getvalue()]),
         media_type="text/csv"
