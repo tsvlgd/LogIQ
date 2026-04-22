@@ -14,6 +14,7 @@ from log_classifier.api.router import router as api_router
 BASE_DIR = Path(__file__).resolve().parent.parent
 WEB_DIR = BASE_DIR / "web"
 
+# HF warnings desabled
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
